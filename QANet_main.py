@@ -20,10 +20,13 @@ from model.modules.ema import EMA
 from util.file_utils import pickle_load_large_file
 
 
-data_folder = "../../../datasets/"
 parser = argparse.ArgumentParser(description='Lucy')
 
 # dataset
+parser.add_argument(
+    '--data_folder',
+    default="./datasets",
+    help='path of folder of squad dataset')
 parser.add_argument(
     '--processed_data',
     default=False, action='store_true',
@@ -246,7 +249,7 @@ parser.add_argument(
     default=8, type=int,
     help='attention num head')
 
-
+data_folder = args.data_folder
 def main(args):
     # show configuration
     print(args)
